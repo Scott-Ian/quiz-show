@@ -1,13 +1,14 @@
-import * as a from './ActionTypes'
+import * as c from './ActionTypes'
 
-export const editForm = id => ({
-  type: a.EDIT_ACTION,
-  display: a.EDITED_FORM,
+export const editForm = (id) => ({
+  type: c.UPDATE_DISPLAY,
+  display: c.EDIT_FORM,
   selectedQuestion: id
 });
 
 
 export const newFormDisplay = () => ({
-  type: a.NEW_FORM,
-  display: a.NEW_FORM,
+  type: c.UPDATE_DISPLAY,
+  display: c.NEW_FORM,
+  selectedQuestion: null
 });
