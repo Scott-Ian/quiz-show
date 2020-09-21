@@ -30,9 +30,30 @@ describe ('displayStateReducer', () => {
     });
   });
 
-  // test('Should alter display to show all details', () => {
-  //   const details = 
-  // })
+  test('Should show question details', () => {
+    const details = a.questionDetails(4);
+    expect(displayStateReducer(currentState, details)).toEqual({
+      display: c.QUESTION_DETAILS,
+      selectedQuestion: 4
+    });
+  });
+  
+  test('Should return to home page/index', () => {
+    const home = a.homeList();
+    expect(displayStateReducer(currentState, home)).toEqual({
+      display: c.HOME_LIST,
+      selectedQuestion: null
+    });
+  });
+
+  test('Should alert user to confirm deletion', () => {
+    const deletion = a.deleteQuestion(5);
+    expect(displayStateReducer(currentState, deletion)).toEqual({
+      display: c.DELETE_Q,
+      selectedQuestion: 5
+    });   
+  });
+
 
   /* Action Object:
   {
