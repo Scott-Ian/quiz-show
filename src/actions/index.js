@@ -6,7 +6,6 @@ export const editForm = (id) => ({
   selectedQuestion: id
 });
 
-
 export const newFormDisplay = () => ({
   type: c.UPDATE_DISPLAY,
   display: c.NEW_FORM,
