@@ -32,3 +32,5 @@ function NewQuestionForm(props){
 NewQuestionForm.propTypes = {
   onNewQuestionCreation: PropTypes.func
 }
+
+export default NewQuestionForm;
