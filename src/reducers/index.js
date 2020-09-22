@@ -3,7 +3,7 @@ import {combineReducers} from 'redux';
 import displayStateReducer from './display-state-reducer'
 
 const rootReducer = combineReducers({
-  display: displayStateReducer,
+  displayStateReducer: displayStateReducer,
   firestore: firestoreReducer,
 });
 

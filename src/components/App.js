@@ -48,17 +48,17 @@ class App extends React.Component {
     // Handle determing what to display:
     let displayComponent;
     // let buttonText;
-    console.log(this.props.displayStateReducer);
+    console.log(this.props.displayStateReducer.display);
     console.log(this.props.selectedQuestion);
-    if(this.props.display === c.QUESTION_LIST) {
+    if(this.props.displayStateReducer.display === c.QUESTION_LIST) {
       displayComponent = <QuestionList onQuestionSelection = {this.handleChangingSelectedQuestion} />
-    } else if (this.props.displayStateReducer === c.QUESTION_DETAILS) {
-      displayComponent = <QuestionDetails selectedQuestion={this.props.firestore.get({collection: 'questions', doc:this.props.selectedQuestion})} onClickingEdit={this.handleClickingEdit} onClickingDelete={this.handleClickingDelete}/>
-    } else if (this.props.display === c.NEW_FORM) {
+    } else if (this.props.displayStateReducer.display === c.QUESTION_DETAILS) {
+      displayComponent = <QuestionDetails selectedQuestion={this.props.firestore.get({collection: 'questions', doc:this.props.display.selectedQuestion})} onClickingEdit={this.handleClickingEdit} onClickingDelete={this.handleClickingDelete}/>
+    } else if (this.props.displayStateReducer.display === c.NEW_FORM) {
       displayComponent = <NewQuestionForm onNewQuestionCreation={this.returnHome} />
-    } else if (this.props.display === c.EDIT_FORM) {
+    } else if (this.props.displayStateReducer.display === c.EDIT_FORM) {
       displayComponent =<EditQuestionForm onEditQuestion ={this.returnHome} />
-    } else if (this.props.display === c.DELETE_Q) {
+    } else if (this.props.displayStateReducer.display === c.DELETE_Q) {
       displayComponent=<DeleteConfirm onDeleteQuestion = {this.returnHome} />
     }
     console.log(displayComponent)
@@ -79,7 +79,7 @@ App.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    display: state.display,
+    displayStateReducer: state.displayStateReducer,
     selectedQuestion: state.selectedQuestion,
   }
 }

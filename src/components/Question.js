@@ -5,8 +5,12 @@ function Question(props) {
   return(
     <React.Fragment>
       <div onClick = {() => props.whenQuestionClicked(props.id)}>
-      <p>{props.thisQuestion}</p>
+      <p>{props.category}</p>
+      <p>{props.question}</p>
+      <p>{props.price}</p>
+      <p>{props.answer}</p>
       </div>
+      <hr />
     </React.Fragment>
   );
 }

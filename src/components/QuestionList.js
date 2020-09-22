@@ -15,10 +15,15 @@ function QuestionList(props){
   if(isLoaded(questions)) {
     return (
       <React.Fragment>
-        {questions.Map((question) => {
+        {questions.map((question) => {
           return <Question
             whenQuestionClicked = { props.onQuestionSelection }
-            thisQuestion = { question } />
+            category = {question.category} 
+            question = {question.question} 
+            price = {question.price}
+            answer = {question.answer}
+            id = {question.id}
+            key = {question.id}/>
         })}
       </React.Fragment>
     )
