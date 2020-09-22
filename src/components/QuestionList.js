@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 
 function QuestionList(props){
+  console.log("quiz list being displayed")
   useFirestoreConnect([
     { collection: 'questions' }
   ]);
