@@ -18,42 +18,42 @@ function App(props) {
 
   // functions here...
   const handleChangingSelectedQuestion = (id) => {
-    const { dispatch } = this.props;
+    const { dispatch } = props;
     const action = a.questionDetails(id);
     dispatch(action);
   }
 
   const returnHome = () => {
-    const { dispatch } = this.props;
+    const { dispatch } = props;
     const action = a.homeList();
     dispatch(action);
   }
 
   const handleClickingEdit = (id) => {
-    const { dispatch } = this.props;
+    const { dispatch } = props;
     const action = a.editForm(id);
     dispatch(action);
   }
 
   const handleClickingDelete =(id) => {
-    const {dispatch } = this.props;
+    const {dispatch } = props;
     const action = a.deleteQuestion(id);
     dispatch(action);
   }
 
   // Handle determing what to display:
   let displayComponent;
-  let buttonText;
+  // let buttonText;
 
-  if(this.state.display === c.QUESTION_LIST) {
+  if(props.display === c.QUESTION_LIST) {
     displayComponent = <QuestionList onQuestionSelection = {handleChangingSelectedQuestion} />
-  } else if (this.state.display === c.QUESTION_DETAILS) {
+  } else if (props.display === c.QUESTION_DETAILS) {
     displayComponent = <QuestionDetails selectedQuestion={this.props.firestore.get({collection: 'questions', doc:this.props.selectedQuestion})} onClickingEdit={handleClickingEdit} onClickingDelete={handleClickingDelete}/>
-  } else if (this.state.display === c.NEW_FORM) {
+  } else if (props.display === c.NEW_FORM) {
     displayComponent = <NewQuestionForm onNewQuestionCreation={returnHome} />
-  } else if (this.state.display === c.EDIT_FORM) {
+  } else if (props.display === c.EDIT_FORM) {
     displayComponent =<EditQuestionForm onEditQuestion ={returnHome} />
-  } else if (this.state.display === c.DELETE_Q) {
+  } else if (props.display === c.DELETE_Q) {
     displayComponent=<DeleteConfirm onDeleteQuestion = {returnHome} />
   }
 
