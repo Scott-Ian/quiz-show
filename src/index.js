@@ -9,7 +9,7 @@ import rootReducer from './reducers/index';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-const store = createStore(rootReducer, { displayStateReducer: { display: 'QUESTION_LIST' }});
+const store = createStore(rootReducer, { displayStateReducer: { display: 'QUESTION_LIST', selectedQuestion: null }});
 
 const rrfProps = {
   firebase,

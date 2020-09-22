@@ -21,6 +21,7 @@ class App extends React.Component {
   }
   // functions here...
   handleChangingSelectedQuestion = (id) => {
+    console.log(id);
     const { dispatch } = this.props;
     const action = a.questionDetails(id);
     dispatch(action);
@@ -39,12 +40,14 @@ class App extends React.Component {
   }
 
   handleClickingDelete =(id) => {
+    console.log(id);
     const {dispatch } = this.props;
     const action = a.deleteQuestion(id);
     dispatch(action);
   }
 
   handleDeletingQuestion = (id) => {
+    console.log(id + " handleDeletingQuestion was called")
     const { dispatch } = this.props;
     this.props.firestore.delete({collection: 'questions', doc: id});
     const action = a.homeList();
@@ -56,17 +59,32 @@ class App extends React.Component {
     let displayComponent;
     // let buttonText;
     console.log(this.props.displayStateReducer.display);
-    console.log(this.props.selectedQuestion);
+    console.log(this.props.displayStateReducer.selectedQuestion);
     if(this.props.displayStateReducer.display === c.QUESTION_LIST) {
       displayComponent = <QuestionList onQuestionSelection = {this.handleChangingSelectedQuestion} />
     } else if (this.props.displayStateReducer.display === c.QUESTION_DETAILS) {
-      displayComponent = <QuestionDetails selectedQuestion={this.props.firestore.get({collection: 'questions', doc:this.props.selectedQuestion})} onClickingEdit={this.handleClickingEdit} onClickingDelete={this.handleClickingDelete}/>
+      console.log(this.props.displayStateReducer.selectedQuestion)
+      let thisQuestion = {};
+      this.props.firestore.get({collection: 'questions', doc: this.props.displayStateReducer.selectedQuestion}).then((question) => {
+        thisQuestion = {
+          category: question.get("category"),
+          question: question.get("question"),
+          price: question.get("price"),
+          answer: question.get("answer"),
+          correctAnswerCount: question.get("correctAnswerCount"),
+          incorrectAnswerCount: question.get("incorrectAnswerCount"),
+          id: question.id
+        }
+      });
+      console.log(thisQuestion);
+      displayComponent = <QuestionDetails selectedQuestion={thisQuestion} onClickingEdit={this.handleClickingEdit} onClickingDelete={this.handleClickingDelete}/>
     } else if (this.props.displayStateReducer.display === c.NEW_FORM) {
       displayComponent = <NewQuestionForm onNewQuestionCreation={this.returnHome} />
     } else if (this.props.displayStateReducer.display === c.EDIT_FORM) {
       displayComponent =<EditQuestionForm onEditQuestion ={this.returnHome} />
     } else if (this.props.displayStateReducer.display === c.DELETE_Q) {
-      displayComponent=<DeleteConfirm selectedQuestion={this.props.firestore.get({collection: 'questions', doc:this.props.selectedQuestion})}onDeleteQuestion = {this.returnHome} onDeleteForReals = {this.handleDeletingQuestion} />
+      console.log(this.props.selectedQuestion)
+      displayComponent=<DeleteConfirm selectedQuestion={this.props.firestore.get({collection: 'questions', doc:this.props.displayStateReducer.selectedQuestion})} onDeleteQuestion = {this.returnHome} onDeleteForReals = {this.handleDeletingQuestion} />
     }
     console.log(displayComponent)
     return(

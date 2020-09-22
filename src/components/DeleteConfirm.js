@@ -12,12 +12,12 @@ function QuestionDelete(props) {
   ]);
 
   const questions = props.selectedQuestion;
-  console.log(questions.id);
+  console.log(questions.id + " questions.id should be here" + questions);
 
   return (
     <React.Fragment>
       <h1>Are you sure you want to delete this question?</h1>
-      <p>{questions.question}</p>
+      <p>{questions.question}</p>                                            
       <Button className="btn btn-alert" onClick={()=> props.onDeleteForReals(questions.id)}>Yes</Button>
 
       <Button className="btn btn-alert" onClick={()=> props.onDeleteQuestion()}>NO</Button>
