@@ -44,6 +44,13 @@ class App extends React.Component {
     dispatch(action);
   }
 
+  handleDeletingQuestion = (id) => {
+    const { dispatch } = this.props;
+    this.props.firestore.delete({collection: 'questions', doc: id});
+    const action = a.homeList();
+    dispatch(action);
+  }
+
   render() {
     // Handle determing what to display:
     let displayComponent;
@@ -53,13 +60,13 @@ class App extends React.Component {
     if(this.props.displayStateReducer.display === c.QUESTION_LIST) {
       displayComponent = <QuestionList onQuestionSelection = {this.handleChangingSelectedQuestion} />
     } else if (this.props.displayStateReducer.display === c.QUESTION_DETAILS) {
-      displayComponent = <QuestionDetails selectedQuestion={this.props.firestore.get({collection: 'questions', doc:this.props.display.selectedQuestion})} onClickingEdit={this.handleClickingEdit} onClickingDelete={this.handleClickingDelete}/>
+      displayComponent = <QuestionDetails selectedQuestion={this.props.firestore.get({collection: 'questions', doc:this.props.selectedQuestion})} onClickingEdit={this.handleClickingEdit} onClickingDelete={this.handleClickingDelete}/>
     } else if (this.props.displayStateReducer.display === c.NEW_FORM) {
       displayComponent = <NewQuestionForm onNewQuestionCreation={this.returnHome} />
     } else if (this.props.displayStateReducer.display === c.EDIT_FORM) {
       displayComponent =<EditQuestionForm onEditQuestion ={this.returnHome} />
     } else if (this.props.displayStateReducer.display === c.DELETE_Q) {
-      displayComponent=<DeleteConfirm onDeleteQuestion = {this.returnHome} />
+      displayComponent=<DeleteConfirm selectedQuestion={this.props.firestore.get({collection: 'questions', doc:this.props.selectedQuestion})}onDeleteQuestion = {this.returnHome} onDeleteForReals = {this.handleDeletingQuestion} />
     }
     console.log(displayComponent)
     return(

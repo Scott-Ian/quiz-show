@@ -20,7 +20,7 @@ export const questionDetails = (id) => ({
 
 export const homeList = () => ({
   type: c.UPDATE_DISPLAY,
-  display: c.HOME_LIST,
+  display: c.QUESTION_LIST,
   selectedQuestion: null
 });
 
