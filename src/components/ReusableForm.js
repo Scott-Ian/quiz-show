@@ -37,15 +37,6 @@ function QuestionForm(props) {
   )
 }
 
-/*
-Category,
-question,
-price,
-answer,
-correctAnswerCount,
-incorrectAnswerCount,
-*/
-
 QuestionForm.propTypes = {
   buttonText: PropTypes.string
 }
