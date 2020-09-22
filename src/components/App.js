@@ -37,7 +37,8 @@ function App(props) {
 
 App.propTypes = {
   display: PropTypes.string,
-  selectedQuestion: PropTypes.string
+  selectedQuestion: PropTypes.string,
+  buttonText: PropTypes.func
 }
 
 const mapStateToProps = state => {
