@@ -24,6 +24,7 @@ function NewQuestionForm(props){
   return (
     <React.Fragment>
       <ReusableForm
+        originalQuestion={null}
         formSubmission={addQuestionToFirestore} />
     </React.Fragment>
   )
