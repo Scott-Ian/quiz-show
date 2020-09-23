@@ -63,21 +63,23 @@ class App extends React.Component {
     if(this.props.displayStateReducer.display === c.QUESTION_LIST) {
       displayComponent = <QuestionList onQuestionSelection = {this.handleChangingSelectedQuestion} />
     } else if (this.props.displayStateReducer.display === c.QUESTION_DETAILS) {
-      console.log(this.props.displayStateReducer.selectedQuestion)
-      let thisQuestion = {};
-      this.props.firestore.get({collection: 'questions', doc: this.props.displayStateReducer.selectedQuestion}).then((question) => {
-        thisQuestion = {
-          category: question.get("category"),
-          question: question.get("question"),
-          price: question.get("price"),
-          answer: question.get("answer"),
-          correctAnswerCount: question.get("correctAnswerCount"),
-          incorrectAnswerCount: question.get("incorrectAnswerCount"),
-          id: question.id
-        }
-      });
-      console.log(thisQuestion);
-      displayComponent = <QuestionDetails selectedQuestion={thisQuestion} onClickingEdit={this.handleClickingEdit} onClickingDelete={this.handleClickingDelete}/>
+      // console.log(this.props.displayStateReducer.selectedQuestion)
+      // let thisQuestion = {};
+      // this.props.firestore.get({collection: 'questions', doc: this.props.displayStateReducer.selectedQuestion}).then((question) => {
+      //   thisQuestion = {
+      //     category: question.get("category"),
+      //     question: question.get("question"),
+      //     price: question.get("price"),
+      //     answer: question.get("answer"),
+      //     correctAnswerCount: question.get("correctAnswerCount"),
+      //     incorrectAnswerCount: question.get("incorrectAnswerCount"),
+      //     ...question.data()
+      //     id: question.id
+      //   }
+      // }).then(() => {
+      //   displayComponent = <QuestionDetails selectedQuestion={thisQuestion} onClickingEdit={this.handleClickingEdit} onClickingDelete={this.handleClickingDelete}/>
+      // })
+      displayComponent = <QuestionDetails onClickingEdit={this.handleClickingEdit} onClickingDelete={this.handleClickingDelete}/>
     } else if (this.props.displayStateReducer.display === c.NEW_FORM) {
       displayComponent = <NewQuestionForm onNewQuestionCreation={this.returnHome} />
     } else if (this.props.displayStateReducer.display === c.EDIT_FORM) {
