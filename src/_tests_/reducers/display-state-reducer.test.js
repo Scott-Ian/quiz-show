@@ -41,7 +41,7 @@ describe ('displayStateReducer', () => {
   test('Should return to home page/index', () => {
     const home = a.homeList();
     expect(displayStateReducer(currentState, home)).toEqual({
-      display: c.HOME_LIST,
+      display: c.QUESTION_LIST,
       selectedQuestion: null
     });
   });
@@ -53,21 +53,4 @@ describe ('displayStateReducer', () => {
       selectedQuestion: 5
     });   
   });
-
-
-  /* Action Object:
-  {
-    type: a.EDIT_Action
-    display: a.EDITED_FORM
-    selectedQuestion: the new id '2344'
-  }
-
-  // States to display:
-  // Question_List
-  // Create New Form
-  // Edit form
-  // Details view
-  // Confirm Delete
-
-})*/
-})
+});

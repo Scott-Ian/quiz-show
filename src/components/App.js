@@ -85,7 +85,7 @@ class App extends React.Component {
       displayComponent =<EditQuestionForm selectedQuestion={this.props.displayStateReducer.selectedQuestion} onEditQuestion ={this.returnHome} />
     } else if (this.props.displayStateReducer.display === c.DELETE_Q) {
       displayComponent=<DeleteConfirm selectedQuestion={this.props.displayStateReducer.selectedQuestion} onDeleteQuestion = {this.returnHome} onDeleteForReals = {this.handleDeletingQuestion} />
-    }
+    } 
     console.log(displayComponent)
     return(
       <React.Fragment>
