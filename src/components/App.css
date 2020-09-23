@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+
+}
+
+.row {
+  width: auto;
+}
+
+.col-md-4 {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  float: left;
+}

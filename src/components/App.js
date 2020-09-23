@@ -11,6 +11,8 @@ import QuestionDetails from './QuestionDetails';
 import NewQuestionForm from './NewQuestionForm';
 import EditQuestionForm from './EditQuestionForm';
 import DeleteConfirm from './DeleteConfirm';
+import Footer from './Footer';
+
 
 
 

@@ -5,6 +5,9 @@ import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Form } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 
 function QuestionDetails(props) {
   useFirestoreConnect([
@@ -50,6 +53,7 @@ function QuestionDetails(props) {
   if (thisQuestion && !formSubmitted) {
     return (
       <React.Fragment>
+        <Container>
         <h1>Question Details</h1>
         <h3>Category: {thisQuestion.category} </h3>
         <hr />
@@ -69,6 +73,7 @@ function QuestionDetails(props) {
           </Form.Group>
           <button className= 'btn-info' type='submit'>Submit!</button>
         </Form>
+        </Container>
       </React.Fragment>
     )
   } else if (thisQuestion && formSubmitted && !answeredCorrectly){
