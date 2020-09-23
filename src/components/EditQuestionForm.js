@@ -2,10 +2,21 @@ import React from "react";
 import ReusableForm from "./ReusableForm";
 import PropTypes from "prop-types";
 import { useFirestore } from 'react-redux-firebase';
+import { useSelector } from 'react-redux'
+import { useFirestoreConnect } from 'react-redux-firebase'
 
 function EditQuestionForm(props) {
   const firestore = useFirestore();
-  const { question } = props;
+  useFirestoreConnect([
+    {
+      collection: 'questions',
+      doc: props.selectedQuestion
+    }
+  ])
+
+  const question = useSelector(state => state.firestore.data.questions[props.selectedQuestion]);
+  console.log(question);
+  
 
   function handleEditQuestionFormSubmission(event) {
     event.preventDefault();
@@ -18,7 +29,7 @@ function EditQuestionForm(props) {
       correctAnswerCount: question.correctAnswerCount,
       incorrectAnswerCount: question.incorrectAnswerCount,
     }
-    return firestore.update({collection: 'questions', doc: question.id }, propertiesToUpdate)
+    return firestore.update({collection: 'questions', doc: props.selectedQuestion }, propertiesToUpdate)
   }
 
   return (
@@ -31,6 +42,7 @@ function EditQuestionForm(props) {
 }
 
 EditQuestionForm.propTypes = {
+  selectedQuestion: PropTypes.string,
   onEditQuestion: PropTypes.func
 };
 

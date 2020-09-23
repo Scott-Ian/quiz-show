@@ -54,7 +54,7 @@ function QuestionDetails(props) {
         <h3>Number of Incorrect Answers: {thisQuestion.incorrectAnswerCount}</h3>
         <h3>{thisQuestion.price}</h3>
         <hr />
-        <button className="btn btn-info" onClick={props.OnClickingEdit}>Update Ticket</button>
+        <button className="btn btn-info" onClick={() => props.onClickingEdit(props.displayStateReducer.selectedQuestion)}>Update Ticket</button>
         <button className="btn btn-alert" onClick={() => props.onClickingDelete(props.displayStateReducer.selectedQuestion)}>Delete Question</button>
       </React.Fragment>
     )

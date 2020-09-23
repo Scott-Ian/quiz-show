@@ -26,7 +26,7 @@ function QuestionDelete(props) {
 }
 
 QuestionDelete.propTypes = {
-  selectedQuestion: PropTypes.object,
+  selectedQuestion: PropTypes.string,
   onDeleteQuestion: PropTypes.func,
   onDeleteForReals: PropTypes.func
 }

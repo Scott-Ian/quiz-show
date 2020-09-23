@@ -47,7 +47,6 @@ class App extends React.Component {
   }
 
   handleDeletingQuestion = (id) => {
-    console.log(id + " handleDeletingQuestion was called")
     const { dispatch } = this.props;
     this.props.firestore.delete({collection: 'questions', doc: id});
     const action = a.homeList();
@@ -83,9 +82,8 @@ class App extends React.Component {
     } else if (this.props.displayStateReducer.display === c.NEW_FORM) {
       displayComponent = <NewQuestionForm onNewQuestionCreation={this.returnHome} />
     } else if (this.props.displayStateReducer.display === c.EDIT_FORM) {
-      displayComponent =<EditQuestionForm onEditQuestion ={this.returnHome} />
+      displayComponent =<EditQuestionForm selectedQuestion={this.props.displayStateReducer.selectedQuestion} onEditQuestion ={this.returnHome} />
     } else if (this.props.displayStateReducer.display === c.DELETE_Q) {
-      console.log(this.props.selectedQuestion)
       displayComponent=<DeleteConfirm selectedQuestion={this.props.displayStateReducer.selectedQuestion} onDeleteQuestion = {this.returnHome} onDeleteForReals = {this.handleDeletingQuestion} />
     }
     console.log(displayComponent)
