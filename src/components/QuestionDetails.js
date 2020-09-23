@@ -41,7 +41,7 @@ function QuestionDetails(props) {
 
 
   const thisQuestion = props.firestore.data.questions[props.displayStateReducer.selectedQuestion];
-
+  console.log(props.displayStateReducer.selectedQuestion);
   if (thisQuestion) {
     return (
       <React.Fragment>
@@ -55,7 +55,7 @@ function QuestionDetails(props) {
         <h3>{thisQuestion.price}</h3>
         <hr />
         <button className="btn btn-info" onClick={props.OnClickingEdit}>Update Ticket</button>
-        <button className="btn btn-alert" onClick={() => props.onClickingDelete(thisQuestion.id)}>Delete Question</button>
+        <button className="btn btn-alert" onClick={() => props.onClickingDelete(props.displayStateReducer.selectedQuestion)}>Delete Question</button>
       </React.Fragment>
     )
   } else {

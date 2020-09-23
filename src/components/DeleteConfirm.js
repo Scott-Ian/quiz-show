@@ -7,18 +7,18 @@ import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 
 function QuestionDelete(props) {
   
-  useFirestoreConnect([
+  /* useFirestoreConnect([
     { collection: 'questions' }
   ]);
 
   const questions = props.selectedQuestion;
-  console.log(questions.id + " questions.id should be here" + questions);
+  console.log(questions.id + " questions.id should be here" + questions); */
 
   return (
     <React.Fragment>
       <h1>Are you sure you want to delete this question?</h1>
-      <p>{questions.question}</p>                                            
-      <Button className="btn btn-alert" onClick={()=> props.onDeleteForReals(questions.id)}>Yes</Button>
+      {/* <p>{questions.question}</p>  */}                                           
+      <Button className="btn btn-alert" onClick={()=> props.onDeleteForReals(props.selectedQuestion)}>Yes</Button>
 
       <Button className="btn btn-alert" onClick={()=> props.onDeleteQuestion()}>NO</Button>
     </React.Fragment>

@@ -86,7 +86,7 @@ class App extends React.Component {
       displayComponent =<EditQuestionForm onEditQuestion ={this.returnHome} />
     } else if (this.props.displayStateReducer.display === c.DELETE_Q) {
       console.log(this.props.selectedQuestion)
-      displayComponent=<DeleteConfirm selectedQuestion={this.props.firestore.get({collection: 'questions', doc:this.props.displayStateReducer.selectedQuestion})} onDeleteQuestion = {this.returnHome} onDeleteForReals = {this.handleDeletingQuestion} />
+      displayComponent=<DeleteConfirm selectedQuestion={this.props.displayStateReducer.selectedQuestion} onDeleteQuestion = {this.returnHome} onDeleteForReals = {this.handleDeletingQuestion} />
     }
     console.log(displayComponent)
     return(
