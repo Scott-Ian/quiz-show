@@ -11,7 +11,7 @@
 <h3 align ='center'>•<a href='#requirements'> Requirements</a> •<a href='#setup'> Setup</a> •<a href='#technologies-used'> Technologies</a> •<a href='#❤️contributors'> Contributors</a> •<a href='#protecting-your-data'> Protecting Data</a> •<a href='#cloning'> Cloning</a></h3>
 
 
-<h3 align='center'>An application exercise through the Epicodus School to demonstrate practical knowledge of Webpack, 8.17.2020</h3>
+<h3 align='center'>An application exercise through the Epicodus School to demonstrate practical knowledge of React Redux with Firestore.</h3>
 
 # **REQUIREMENTS**
 
@@ -57,6 +57,12 @@ _[Webpack](https://webpack.js.org/)_
 
 _[Visual Studio Code](https://code.visualstudio.com/)_
 
+_[React](https://reactjs.org/)_
+
+_[Redux](https://redux.js.org/)_
+
+_[Firebase](https://firebase.google.com/)_
+
 <br>
 
 # **INSTALL**
@@ -70,7 +76,6 @@ with the root project folder open in your code editor, execute the following in 
 
 ``npm install``
 
-``npm run build``
 
 <br>
 
