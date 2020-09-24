@@ -16,7 +16,7 @@ function QuestionList(props){
     { collection: 'questions' }
   ]);
 
-  const questions = useSelector(state => state.firestore.ordered.questions);
+  const questions = useSelector(state => state.firestore.ordered.questions);//this is a hook!
 
   if(isLoaded(questions)) {
     return (

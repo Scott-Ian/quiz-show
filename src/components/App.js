@@ -95,7 +95,9 @@ class App extends React.Component {
       <React.Fragment>
         <Container>
           <Header />
+          <CardColumns>
           {displayComponent}
+          </CardColumns>
           <Footer />
         </Container>
       </React.Fragment>
