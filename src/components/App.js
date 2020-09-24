@@ -12,6 +12,8 @@ import NewQuestionForm from './NewQuestionForm';
 import EditQuestionForm from './EditQuestionForm';
 import DeleteConfirm from './DeleteConfirm';
 import Footer from './Footer';
+import Container from 'react-bootstrap/Container';
+import CardColumns from 'react-bootstrap/CardColumns';
 
 
 
@@ -41,16 +43,16 @@ class App extends React.Component {
     dispatch(action);
   }
 
-  handleClickingDelete =(id) => {
+  handleClickingDelete = (id) => {
     console.log(id);
-    const {dispatch } = this.props;
+    const { dispatch } = this.props;
     const action = a.deleteQuestion(id);
     dispatch(action);
   }
 
   handleDeletingQuestion = (id) => {
     const { dispatch } = this.props;
-    this.props.firestore.delete({collection: 'questions', doc: id});
+    this.props.firestore.delete({ collection: 'questions', doc: id });
     const action = a.homeList();
     dispatch(action);
   }
@@ -61,8 +63,8 @@ class App extends React.Component {
     // let buttonText;
     console.log(this.props.displayStateReducer.display);
     console.log(this.props.displayStateReducer.selectedQuestion);
-    if(this.props.displayStateReducer.display === c.QUESTION_LIST) {
-      displayComponent = <QuestionList onQuestionSelection = {this.handleChangingSelectedQuestion} />
+    if (this.props.displayStateReducer.display === c.QUESTION_LIST) {
+      displayComponent = <QuestionList onQuestionSelection={this.handleChangingSelectedQuestion} />
     } else if (this.props.displayStateReducer.display === c.QUESTION_DETAILS) {
       // console.log(this.props.displayStateReducer.selectedQuestion)
       // let thisQuestion = {};
@@ -80,19 +82,22 @@ class App extends React.Component {
       // }).then(() => {
       //   displayComponent = <QuestionDetails selectedQuestion={thisQuestion} onClickingEdit={this.handleClickingEdit} onClickingDelete={this.handleClickingDelete}/>
       // })
-      displayComponent = <QuestionDetails onClickingEdit={this.handleClickingEdit} onClickingDelete={this.handleClickingDelete}/>
+      displayComponent = <QuestionDetails onClickingEdit={this.handleClickingEdit} onClickingDelete={this.handleClickingDelete} />
     } else if (this.props.displayStateReducer.display === c.NEW_FORM) {
       displayComponent = <NewQuestionForm onNewQuestionCreation={this.returnHome} />
     } else if (this.props.displayStateReducer.display === c.EDIT_FORM) {
-      displayComponent =<EditQuestionForm selectedQuestion={this.props.displayStateReducer.selectedQuestion} onEditQuestion ={this.returnHome} />
+      displayComponent = <EditQuestionForm selectedQuestion={this.props.displayStateReducer.selectedQuestion} onEditQuestion={this.returnHome} />
     } else if (this.props.displayStateReducer.display === c.DELETE_Q) {
-      displayComponent=<DeleteConfirm selectedQuestion={this.props.displayStateReducer.selectedQuestion} onDeleteQuestion = {this.returnHome} onDeleteForReals = {this.handleDeletingQuestion} />
-    } 
+      displayComponent = <DeleteConfirm selectedQuestion={this.props.displayStateReducer.selectedQuestion} onDeleteQuestion={this.returnHome} onDeleteForReals={this.handleDeletingQuestion} />
+    }
     console.log(displayComponent)
-    return(
+    return (
       <React.Fragment>
-        <Header />
-        {displayComponent}
+        <Container>
+          <Header />
+          {displayComponent}
+          <Footer />
+        </Container>
       </React.Fragment>
     )
   }

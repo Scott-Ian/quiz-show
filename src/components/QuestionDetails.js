@@ -18,7 +18,7 @@ function QuestionDetails(props) {
   // console.log( props.firestore);
   // console.log(props.firestore.data.questions[props.displayStateReducer.selectedQuestion]);
 
-  const [formSubmitted, setFormSubmission] = useState(false); //the hooks!!!
+  const [formSubmitted, setFormSubmission] = useState(false); //the hooks!!! (non component state)
   const [answeredCorrectly, setAnswerState] = useState(null);
 
   const thisQuestion = props.firestore.data.questions[props.displayStateReducer.selectedQuestion];

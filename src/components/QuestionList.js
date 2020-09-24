@@ -21,8 +21,8 @@ function QuestionList(props){
   if(isLoaded(questions)) {
     return (
       <React.Fragment>
-          <div className="container" >
-           <CardColumns>
+          {/* <div className="container" > */}
+          <CardColumns>
                 {questions.map((question) => {
                   return <Question
                     whenQuestionClicked = { props.onQuestionSelection }
@@ -34,7 +34,7 @@ function QuestionList(props){
                     key = {question.id}/>
                 })}
             </CardColumns>
-        </div>
+        {/* </div> */}
       </React.Fragment>
     )
   } else {
